@@ -1,0 +1,14 @@
+{
+	"geode": "4.3.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "freakyrobot.folder_0_tweaks",
+	"name": "Folder 0 Tweaks",
+	"version": "v1.0.0",
+	"developer": "FreakyRobot",
+	"description": "wip"
+}
