@@ -21,7 +21,8 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 	void setupLevelBrowser(CCArray* p0) {
 
 		LevelBrowserLayer::setupLevelBrowser(p0);
-		if (this->m_searchObject->m_searchType != SearchType::MyLevels) return;
+		if (this->m_searchObject->m_searchType != SearchType::MyLevels ||
+			this->m_searchObject->m_folder) return;
 
 		CCArray* levels = getLevelNodeList();
 		if (!levels) return;
@@ -41,7 +42,7 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 			sprite->setScale(0.75f);
 			sprite->setPosition(nameSprite->getPosition() + CCPoint(
 				nameSprite->getContentSize().width * nameSprite->getScaleX() + 7.0f,
-				-3.75f / nameSprite->getScaleY()
+				-3.75f * nameSprite->getScaleY()
 			));
 
 			auto textSprite = CCLabelBMFont::create(
@@ -60,6 +61,5 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 		}
 
 	};
-
 
 };

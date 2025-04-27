@@ -19,14 +19,6 @@
 		"info": "Issues are best reported on <cg>GitHub</c>",
 		"url": "https://github.com/MaSp005/folder0tweaks/issues"
 	},
-	"settings": {
-		"hideNon0": {
-			"type": "bool",
-			"default": false,
-			"description": "When on Folder 0, hides Levels that are not assigned to Folder 0.",
-			"name": "Hide Non-Folder 0 levels"
-		}
-	},
 	"dependencies": {
 		"geode.node-ids": ">=1.17.0"
 	},
