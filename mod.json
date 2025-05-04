@@ -1,5 +1,5 @@
 {
-	"geode": "4.3.0",
+	"geode": "4.4.0",
 	"gd": {
 		"win": "2.2074",
 		"android": "2.2074",
@@ -20,7 +20,11 @@
 		"url": "https://github.com/MaSp005/folder0tweaks/issues"
 	},
 	"dependencies": {
-		"geode.node-ids": ">=1.17.0"
+		"geode.node-ids": ">=1.17.0",
+		"zilko.improved_folders": {
+			"version": ">=1.0.0",
+			"importance": "suggested"
+		}
 	},
 	"tags": [
 		"interface",
