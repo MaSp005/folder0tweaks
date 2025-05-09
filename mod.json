@@ -26,6 +26,14 @@
 			"importance": "suggested"
 		}
 	},
+	"settings": {
+		"hideNon0": {
+			"type": "bool",
+			"default": false,
+			"description": "When on Folder 0, hides Levels that are not assigned to Folder 0.",
+			"name": "Hide Non-Folder 0 levels"
+		}
+	},
 	"tags": [
 		"interface",
 		"utility",

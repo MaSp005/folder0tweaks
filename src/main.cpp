@@ -5,11 +5,11 @@ using namespace geode::prelude;
 #include <Geode/modify/LevelBrowserLayer.hpp>
 class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 
-	CCArray* getLevelNodeList() {
+	CCContentLayer* getLevelNodeList() {
 		if (auto listView = this->m_list->getChildByID("list-view")) {
 			if (auto tableView = listView->getChildByType<TableView>(0)) {
 				if (auto content = tableView->getChildByType<CCContentLayer>(0)) {
-					return content->getChildren();
+					return content;
 				}
 				else return nullptr;
 			}
@@ -20,15 +20,27 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 
 	void setupLevelBrowser(CCArray* p0) {
 
-		LevelBrowserLayer::setupLevelBrowser(p0);
 		if (this->m_searchObject->m_searchType != SearchType::MyLevels ||
-			this->m_searchObject->m_folder) return;
+			this->m_searchObject->m_folder) return LevelBrowserLayer::setupLevelBrowser(p0);
 
-		CCArray* levels = getLevelNodeList();
-		if (!levels) return;
+		if (Mod::get()->getSettingValue<bool>("hideNon0")) {
+			log::debug("Removing.... {} {}", this->m_levels->count(), this->m_itemCount);
+			for (int i = 0; i < this->m_levels->count(); i++) {
+				auto lvl = static_cast<GJGameLevel*>(this->m_levels->objectAtIndex(i));
+				log::debug("{}: {} {}", i, lvl->m_levelName, lvl->m_levelFolder);
+				if (lvl->m_levelFolder) {
+					this->m_levels->removeObjectAtIndex(i);
+					i--;
+				}
+			}
+			// return LevelBrowserLayer::setupLevelBrowser(p0);
+		}
 
-		bool hideSetting = Mod::get()->getSettingValue<bool>("hideNon0");
-		log::debug("setupLevelBrowser {} {}", p0->count(), hideSetting);
+		LevelBrowserLayer::setupLevelBrowser(p0);
+
+		CCContentLayer* levelLayer = getLevelNodeList();
+		if (!levelLayer) return;
+		CCArray* levels = levelLayer->getChildren();
 
 		for (int i = 0; i < levels->count(); i++) {
 			LevelCell* levelObj = static_cast<LevelCell*>(levels->objectAtIndex(i));
