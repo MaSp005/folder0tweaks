@@ -19,11 +19,7 @@
 		"url": "https://github.com/MaSp005/folder0tweaks/issues"
 	},
 	"dependencies": {
-		"geode.node-ids": ">=1.17.0",
-		"zilko.improved_folders": {
-			"version": ">=1.0.0",
-			"importance": "suggested"
-		}
+		"geode.node-ids": ">=1.17.0"
 	},
 	"settings": {
 		"hideNon0": {
