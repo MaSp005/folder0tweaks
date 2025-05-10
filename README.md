@@ -1,23 +1,5 @@
-# Folder0Tweaks
-This is where she makes a mod.
+# Folder 0 Tweaks
 
-<img src="logo.png" width="150" alt="the mod's logo" />
+This is a simple mod that, when viewing your level list on folder 0, shows the folder number of each level, helping you with organizing your level folders.
 
-*Update logo.png to change your mod's icon (please)*
-
-## Getting started
-We recommend heading over to [the getting started section on our docs](https://docs.geode-sdk.org/getting-started/) for useful info on what to do next.
-
-## Build instructions
-For more info, see [our docs](https://docs.geode-sdk.org/getting-started/create-mod#build)
-```sh
-# Assuming you have the Geode CLI set up already
-geode build
-```
-
-# Resources
-* [Geode SDK Documentation](https://docs.geode-sdk.org/)
-* [Geode SDK Source Code](https://github.com/geode-sdk/geode/)
-* [Geode CLI](https://github.com/geode-sdk/cli)
-* [Bindings](https://github.com/geode-sdk/bindings/)
-* [Dev Tools](https://github.com/geode-sdk/DevTools)
+It also offers the setting to exclude levels which are not explicitly on folder 0 from being shown on folder 0. If you like having all your levels categorized, this helps to quickly sort everything out of the nasty catch-all.

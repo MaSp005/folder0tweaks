@@ -10,10 +10,9 @@
 	"name": "Folder 0 Tweaks",
 	"version": "v1.0.0",
 	"developer": "FreakyRobot",
-	"description": "Shows Folders of Levels when viewing Folder 0",
+	"description": "Shows folders of levels when viewing folder 0",
 	"links": {
-		"source": "https://github.com/MaSp005/folder0tweaks",
-		"community": "https://discord.gg/hzDFNaNgCf"
+		"source": "https://github.com/MaSp005/folder0tweaks"
 	},
 	"issues": {
 		"info": "Issues are best reported on <cg>GitHub</c>",
@@ -30,7 +29,7 @@
 		"hideNon0": {
 			"type": "bool",
 			"default": false,
-			"description": "When on Folder 0, hides Levels that are not assigned to Folder 0. <co>Warning: Currently only hides relevant level entries on each page and messes up paging and the displayed level count.</c>",
+			"description": "When on folder 0, hides Levels that are assigned to anything other than folder 0. <co>Warning: Currently only hides relevant level entries on each page and messes up paging and the displayed level count.</c>",
 			"name": "Hide Non-Folder 0 levels"
 		}
 	},
