@@ -26,14 +26,14 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 		if (Mod::get()->getSettingValue<bool>("hideNon0")) {
 			log::debug("Removing.... {} {}", this->m_levels->count(), this->m_itemCount);
 			for (int i = 0; i < this->m_levels->count(); i++) {
-				auto lvl = static_cast<GJGameLevel*>(this->m_levels->objectAtIndex(i));
-				log::debug("{}: {} {}", i, lvl->m_levelName, lvl->m_levelFolder);
+				auto obj = this->m_levels->objectAtIndex(i);
+				auto lvl = static_cast<GJGameLevel*>(obj);
 				if (lvl->m_levelFolder) {
 					this->m_levels->removeObjectAtIndex(i);
 					i--;
 				}
 			}
-			// return LevelBrowserLayer::setupLevelBrowser(p0);
+			return LevelBrowserLayer::setupLevelBrowser(p0);
 		}
 
 		LevelBrowserLayer::setupLevelBrowser(p0);
@@ -47,7 +47,7 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 			int lvlFolder = levelObj->m_level->m_levelFolder;
 
 			auto nameSprite = levelObj->m_mainLayer->getChildByID("level-name");
-			
+
 			auto sprite = CCSprite::createWithSpriteFrameName("gj_folderBtn_001.png");
 			sprite->setID("folder"_spr);
 			sprite->setAnchorPoint(CCPoint(0.0f, 0.5f));

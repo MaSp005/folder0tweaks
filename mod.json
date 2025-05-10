@@ -30,7 +30,7 @@
 		"hideNon0": {
 			"type": "bool",
 			"default": false,
-			"description": "When on Folder 0, hides Levels that are not assigned to Folder 0.",
+			"description": "When on Folder 0, hides Levels that are not assigned to Folder 0. <co>Warning: Currently only hides relevant level entries on each page and messes up paging and the displayed level count.</c>",
 			"name": "Hide Non-Folder 0 levels"
 		}
 	},
