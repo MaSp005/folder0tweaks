@@ -27,6 +27,11 @@
 			"default": false,
 			"description": "When on folder 0, hides Levels that are assigned to anything other than folder 0. <co>Warning: Currently only hides relevant level entries on each page and messes up paging and the displayed level count.</c>",
 			"name": "Hide Non-Folder 0 levels"
+		},
+		"showInSaved": {
+			"type": "bool",
+			"default": true,
+			"name": "Show in saved levels"
 		}
 	},
 	"tags": [
