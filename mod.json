@@ -8,7 +8,7 @@
 	},
 	"id": "freakyrobot.folder0tweaks",
 	"name": "Folder 0 Tweaks",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "FreakyRobot",
 	"description": "Shows folders of levels when viewing folder 0",
 	"links": {
@@ -32,6 +32,6 @@
 	"tags": [
 		"interface",
 		"utility",
-		"offline"
+		"enhancement"
 	]
 }
