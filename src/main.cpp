@@ -17,7 +17,8 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 	bool init(GJSearchObject* searchObject) {
 		if (!LevelBrowserLayer::init(searchObject)) return false;
 
-		if (searchObject->m_searchType != SearchType::MyLevels)
+		if (searchObject->m_searchType != SearchType::MyLevels &&
+			searchObject->m_searchType != SearchType::SavedLevels)
 			return true;
 
 		showArray("m_levels in init", this->m_levels);
@@ -38,6 +39,8 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 		switch (m_searchObject->m_searchType) {
 			case SearchType::MyLevels:
 				return LocalLevelManager::get()->getCreatedLevels(m_searchObject->m_folder);
+			case SearchType::SavedLevels:
+				return GameLevelManager::get()->getSavedLevels(false, m_searchObject->m_folder);
 			default:
 				return nullptr;
 		}
@@ -45,7 +48,8 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 
 	void setupLevelBrowser(CCArray* p0) {
 
-		if (this->m_searchObject->m_searchType != SearchType::MyLevels ||
+		if (this->m_searchObject->m_searchType != SearchType::MyLevels &&
+			this->m_searchObject->m_searchType != SearchType::SavedLevels ||
 			this->m_searchObject->m_folder) return LevelBrowserLayer::setupLevelBrowser(p0);
 
 		if (Mod::get()->getSettingValue<bool>("hideNon0")) {
@@ -98,20 +102,35 @@ class $modify(MyLevelBrowserLayer, LevelBrowserLayer) {
 			LevelCell* levelObj = static_cast<LevelCell*>(levels->objectAtIndex(i));
 			int lvlFolder = levelObj->m_level->m_levelFolder;
 
-			auto nameSprite = levelObj->m_mainLayer->getChildByID("level-name");
-			if (!nameSprite) {
+			CCNode* alignNextTo;
+			float scale;
+			float yOffset;
+			if (this->m_searchObject->m_searchType == SearchType::MyLevels) {
+				alignNextTo = levelObj->m_mainLayer->getChildByID("level-name");
+				bool hasRevision = levelObj->m_mainLayer->getChildByID("level-revision") != nullptr;
+				scale = hasRevision ? 0.5f : 0.75f;
+				yOffset = hasRevision ? 10.f : 0.f;
+			} else {
+				alignNextTo = levelObj->m_mainLayer->getChildByID("orbs-label");
+				if (!alignNextTo)
+					alignNextTo = levelObj->m_mainLayer->getChildByID("likes-label");
+				scale = 0.5f;
+				yOffset = 0.f;
+			}
+
+			if (!alignNextTo) {
 				log::warn("Folder indicator on level {} failed.", levelObj->m_level->m_levelName);
 				continue;
 			}
-			auto hasRevision = levelObj->m_mainLayer->getChildByID("level-revision") != nullptr;
 
 			auto folderSprite = CCSprite::createWithSpriteFrameName("gj_folderBtn_001.png");
 			folderSprite->setID("folder"_spr);
 			folderSprite->setAnchorPoint(CCPoint(0.f, 0.5f));
-			folderSprite->setScale(hasRevision ? 0.5f : 0.75f);
-			folderSprite->setPosition(nameSprite->getPosition() + CCPoint(
-				nameSprite->getContentSize().width * nameSprite->getScaleX() + 7.f,
-				-3.75f * nameSprite->getScaleY() + (hasRevision ? 10.f : 0.f)
+			folderSprite->setScale(scale);
+			
+			folderSprite->setPosition(alignNextTo->getPosition() + CCPoint(
+				alignNextTo->getContentSize().width * alignNextTo->getScaleX() + 7.f,
+				-3.75f * alignNextTo->getScaleY() + yOffset
 			));
 
 			auto textSprite = CCLabelBMFont::create(
