@@ -1,3 +1,9 @@
+#include <Geode/binding/GJListLayer.hpp>
+#include <Geode/binding/GJSearchObject.hpp>
+#include <Geode/binding/GJGameLevel.hpp>
+#include <Geode/binding/LevelCell.hpp>
+#include <Geode/binding/BoomListView.hpp>
+#include <Geode/binding/TableView.hpp>
 #include <Geode/modify/LevelBrowserLayer.hpp>
 
 using namespace geode::prelude;
